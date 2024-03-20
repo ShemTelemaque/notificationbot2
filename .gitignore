@@ -1,3 +1,4 @@
 workspace.code-workspace
 secrets.json
 sectrets.py
+log/bot_notification.log

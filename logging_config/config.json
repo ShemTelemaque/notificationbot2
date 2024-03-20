@@ -1,0 +1,51 @@
+{
+    "version": 1,
+    "disable_existing_loggers": false,
+    "filters": {},
+    "formatters": {
+        "simple": {
+            "format": "%(levelname)s %(asctime)s %(funcName)s: %(message)s"
+        },
+        "detailed": {
+            "format": "(%(levelname)s|%(module)s|L%(lineno)d]: %(asctime)s %(message)s",
+            "datefmt": "%Y-%m-%dT%H:%M:%S%z"
+        }
+    },
+    "handlers": {
+        "stdout": {
+            "class": "logging.StreamHandler",
+            "level": "INFO",
+            "formatter": "simple",
+            "stream": "ext://sys.stdout"
+        },
+        "stderr": {
+            "class": "logging.StreamHandler",
+            "level": "WARNING",
+            "formatter": "simple",
+            "stream": "ext://sys.stderr"
+        },
+        "file": {
+            "class": "logging.handlers.RotatingFileHandler",
+            "level": "DEBUG",
+            "formatter": "detailed",
+            "filename": "log/bot_notification.log",
+            "maxBytes": 10000,
+            "backupCount": 3
+        },
+        "queue_handler": {
+            "class": "logging.handlers.QueueHandler",
+            "handlers": [
+                "stderr"
+            ],
+            "respect_handler_level": true
+        }
+    },
+    "loggers": {
+        "root": {
+            "level": "DEBUG",
+            "handlers": [
+                "queue_handler"
+            ]
+        }
+    }
+}
