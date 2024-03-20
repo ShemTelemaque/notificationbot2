@@ -39,7 +39,7 @@
             "level": "DEBUG",
             "handlers": [
                 "file",
-                "stdout"
+                "stdout",
                 "stderr"
             ]
         }
